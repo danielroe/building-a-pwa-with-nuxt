@@ -19,6 +19,8 @@ export default {
   pwa: {
     meta: {
       name: 'Building a PWA with Nuxt',
+      description:
+        "We're building a PWA with Nuxt at the eCommerce Tech Summit!",
       theme_color: '#00DC82',
     },
     manifest: {
