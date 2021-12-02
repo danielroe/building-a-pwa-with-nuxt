@@ -7,6 +7,15 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: ['@nuxtjs/pwa'],
 
+  plugins: ['~/plugins/analytics.client.js'],
+
+  serverMiddleware: [
+    {
+      path: '/api/slow',
+      handler: '~/api/slow',
+    },
+  ],
+
   pwa: {
     meta: {
       name: 'Building a PWA with Nuxt',
@@ -16,6 +25,17 @@ export default {
       name: 'Building a PWA with Nuxt',
       short_name: 'Nuxt PWA',
     },
-    // workbox
+    workbox: {
+      // enabled: true,
+      // config: {
+      //   debug: true,
+      // },
+      runtimeCaching: [
+        {
+          urlPattern: '/api/.*',
+          handler: 'StaleWhileRevalidate',
+        },
+      ],
+    },
   },
 }
